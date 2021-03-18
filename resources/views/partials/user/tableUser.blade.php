@@ -12,7 +12,7 @@
       @foreach ($users as $item)
         <tr>
             <td>{{$item->id}}</td>
-            <td>{{$item->nom}}</td>
+            <td>{{$item->name}}</td>
             <td>
                 <form action="/users/{{$item->id}}" method="POST">
                     @csrf

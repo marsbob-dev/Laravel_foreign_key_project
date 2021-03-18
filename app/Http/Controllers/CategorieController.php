@@ -63,9 +63,9 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorie $categorie)
+    public function edit($id)
     {
-        $edit = $categorie;
+        $edit = Categorie::find($id);
         return view('pages.categories.editCategories',compact('edit'));
     }
 
@@ -76,13 +76,13 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorie $categorie)
+    public function update(Request $request, $id)
     {
         $validated = $request->validate([
             'nom' => 'required'
         ]);
         
-        $updateEntry = $categorie;
+        $updateEntry = Categorie::find($id);
         $updateEntry->nom = $request->nom;
         $updateEntry->save();
         return redirect('categories');
@@ -94,8 +94,10 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorie $categorie)
+    public function destroy($id)
     {
+        
+        $categorie = Categorie::find($id);
         $categorie->delete();
         return redirect('categories');
     }
