@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AvatarController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +27,7 @@ Route::get('/bo', function () {
 });
 Route::resource('avatars', AvatarController::class);
 Route::resource('users', UserController::class);
-Route::resource('categories', CategoryController::class);
+Route::resource('categories', CategorieController::class);
 Route::resource('images', ImageController::class);
 
 Auth::routes();

@@ -16,7 +16,7 @@ class AvatarSeeder extends Seeder
     {
         DB::table('avatars')->insert([
             [
-                "name" => "default",
+                "nom" => "default",
                 "src" => "default-avatar.jpg"
             ]
         ]);

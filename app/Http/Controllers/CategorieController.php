@@ -14,7 +14,8 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Categorie::all();
+        return view('pages.categories.indexCategories',compact('categories'));
     }
 
     /**
@@ -35,7 +36,14 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nom' => 'required'
+        ]);
+
+        $newEntry = new Categorie;
+        $newEntry->name = $request->name;
+        $newEntry->save();
+        return redirect('categories');
     }
 
     /**
@@ -57,7 +65,8 @@ class CategorieController extends Controller
      */
     public function edit(Categorie $categorie)
     {
-        //
+        $edit = $categorie;
+        return view('pages.categories.editCategories',compact('edit'));
     }
 
     /**
@@ -69,7 +78,14 @@ class CategorieController extends Controller
      */
     public function update(Request $request, Categorie $categorie)
     {
-        //
+        $validated = $request->validate([
+            'nom' => 'required'
+        ]);
+        
+        $updateEntry = $categorie;
+        $updateEntry->name = $request->name;
+        $updateEntry->save();
+        return redirect('categories');
     }
 
     /**
@@ -80,6 +96,7 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
-        //
+        $categorie->delete();
+        return redirect('categories');
     }
 }

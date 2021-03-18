@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-2">
+            <a href="/bo" class="mt-5 btn btn-outline-secondary">Backoffice</a>
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
