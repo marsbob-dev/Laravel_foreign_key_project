@@ -15,8 +15,13 @@
           <a class="nav-link" href="/categories">Categories</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Images</a>
+          <a class="nav-link" href="/images">Images</a>
         </li>
       </ul>
     </div>
   </nav>
+
+  <div class="text-center my-5">
+    <h1>Bienvenue dans la partie BackOffice</h1>
+    <h3>Voyagez a travers le site via la barre de navigation</h3>
+  </div>

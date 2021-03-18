@@ -20,7 +20,6 @@ class AvatarController extends Controller
         return view("pages.avatar.indexAvatar" ,compact("avatars"));
     }
 
-    
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +27,7 @@ class AvatarController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -40,15 +39,14 @@ class AvatarController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "nom" => "required",
-            "src" => "required",
+            'nom' => 'required',
+            'src' => 'required'
         ]);
 
-        $newEntry =new Avatar;
-
-        $newEntry->nom=$request->nom;
-        $newEntry->src=$request->file('src')->hashName();
-        $request->file('src')->storePublicly('img/','public');
+        $newEntry = new Avatar;
+        $newEntry->src = $request->file('src')->hashName();
+        $request->file('src')->storePublicly('img/', 'public');
+        $newEntry->nom = $request->nom;
         $newEntry->save();
         return redirect('avatars');
     }
@@ -61,7 +59,7 @@ class AvatarController extends Controller
      */
     public function show(Avatar $avatar)
     {
-
+        //
     }
 
     /**
@@ -108,12 +106,12 @@ class AvatarController extends Controller
     public function destroy(Avatar $avatar)
     {
         Storage::disk('public')->delete('img/'.$avatar->src);
-        $users = User::all();
-        foreach ($users->where('avatar_id',$avatar->id) as $item) {
+        $users = User::where('avatar_id','=',$avatar->id)->get();
+        foreach ($users as $item) {
             $item->avatar_id = 1;
+            $item->save();
         }
         $avatar->delete();
         return redirect('avatars');
-    }
-    
+    } 
 }

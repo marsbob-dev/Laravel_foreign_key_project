@@ -41,7 +41,7 @@ class CategorieController extends Controller
         ]);
 
         $newEntry = new Categorie;
-        $newEntry->name = $request->name;
+        $newEntry->nom = $request->nom;
         $newEntry->save();
         return redirect('categories');
     }
@@ -83,7 +83,7 @@ class CategorieController extends Controller
         ]);
         
         $updateEntry = $categorie;
-        $updateEntry->name = $request->name;
+        $updateEntry->nom = $request->nom;
         $updateEntry->save();
         return redirect('categories');
     }
